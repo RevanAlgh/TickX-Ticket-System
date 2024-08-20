@@ -59,14 +59,6 @@ TickX is a Client Support Ticketing System where clients can submit, manage tick
 
 ---
 
-### System Layers:
-- Web
-- API
-- Service
-- DB
-
----
-
 ### Features
 
 - **User Management:** Registration, login, password reset, JWT authentication.
