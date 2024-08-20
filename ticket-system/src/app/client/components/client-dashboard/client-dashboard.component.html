@@ -1,0 +1,107 @@
+<div class="row my-4">
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>
+<div class="row mb-1">
+  <div class="box-container mb-3">
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketsByStatus.inProgress}}</h2>
+        <h2 class="topic">{{'inProgressTickets' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-reception-3" viewBox="0 0 16 16">
+        <path
+          d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5zm4 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5" />
+      </svg>
+
+    </div>
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketsByStatus.new}}</h2>
+        <h2 class="topic">{{'newTickets' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+        <path
+          d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+        <path
+          d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+      </svg>
+    </div>
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketPerMonth.ticketsCount}}</h2>
+        <h2 class="topic">{{'ticketsOfMonth' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-calendar3-week" viewBox="0 0 16 16">
+        <path
+          d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
+        <path
+          d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+      </svg>
+    </div>
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketsOfYear}}</h2>
+        <h2 class="topic">{{'ticketsDuringAyear' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-calendar-check-fill" viewBox="0 0 16 16">
+        <path
+          d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+      </svg>
+    </div>
+  </div>
+</div>
+<div class="row">
+
+  <div class="card">
+    <div class="card-header p-2">
+      <strong>{{'youRecentTickets' | translate}}</strong>
+
+    </div>
+
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-md-4 my-2" *ngFor="let item of tickets">
+          <div class="card" style="max-width: 300px; min-width: 187px;">
+            <div class="card-header d-flex justify-content-between">
+              <div> {{ 'ticket' | translate }} #{{item.ticketId}}</div>
+              <div>
+                <i [ngClass]="getStatusIconClass(item.status)" aria-hidden="true"></i> {{
+                item.status | status | translate
+                }}
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <div>
+                  <i class="fa fa-calendar"></i> {{ item.createdAt| translate | date}}
+                </div>
+
+              </div>
+
+              <div class="d-flex justify-content-between mb-2">
+                <div>
+                  {{'product' | translate}}: {{getProduct(item.productId)?.name?.toString()}}
+                </div>
+              </div>
+
+
+              <div class="d-flex justify-content-between mb-2">
+                <div>
+                  {{'issue'}}: {{item.title}}
+                </div>
+              </div>
+              <div class="d-flex justify-content-end">
+
+                <button class="btn btn-secondary" [routerLink]="['../ticket-details']" [state]="{ ticket: item}"><i
+                    class="fa fa-eye" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal-header pt-4 px-4" style="border-bottom: 1px solid black;">
+  <h5 class="modal-title">{{inputdata.title | translate }}</h5>
+  <button type="button" class="btn-close mx-2" aria-label="Close" (click)="closepopup()"></button>
+</div>
+<div class="modal-body px-2">
+  <div class="mb-3">
+    <label for="name" class="form-label">{{'name' | translate}}</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="user.fullName">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">{{'email' | translate}}</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
+  </div>
+  <div class="mb-3">
+    <label for="mobileNumber" class="form-label">{{'phone' | translate}}</label>
+    <input type="tel" class="form-control" id="phone" [(ngModel)]="phoneNum
+      ">
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">{{'username' | translate}}</label>
+    <input type="text" [disabled]="user.userId == -1 ? false : true" class="form-control" id="username"
+      [(ngModel)]="user.userName">
+
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">{{'birthDate' | translate}}</label>
+    <input type="date" class="form-control" id="dob" [(ngModel)]="user.dob">
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">{{'address' | translate}}</label>
+    <input type="text" class="form-control" id="address" [(ngModel)]="user.address">
+  </div>
+
+</div>
+<div class="modal-footer p-3">
+  <button type="submit" (click)="saveUser()" class="btn btn-primary">{{'save' | translate}}</button>
+  <button type="button" class="btn btn-secondary" (click)="closepopup()">{{'close' | translate}}</button>
+</div>

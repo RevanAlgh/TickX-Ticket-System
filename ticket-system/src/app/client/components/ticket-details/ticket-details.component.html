@@ -1,0 +1,107 @@
+<div class="position-relative my-3">
+  <div class="right">
+    <button class="btn btn-secondary right" [routerLink]="[getRouterLink()]"><i class="fa fa-undo mx-1"
+        aria-hidden="true"></i>
+      {{ 'back'|
+      translate}}</button>
+  </div>
+</div>
+<hr width="100%" size="5">
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ 'ticket' | translate }} #</strong><span>{{ ticket.ticketId }}</span>
+        </div>
+        <div>
+          <strong>{{ 'priority' | translate }}: </strong><span>{{ ticket.priority | priority | translate}}</span>
+        </div>
+        <div>
+          <strong>{{ 'status' | translate }}: </strong><span>{{ ticket.status | status | translate}}</span>
+        </div>
+        <div>
+          <span>{{ ticket.createdAt | date: 'short' }}
+          </span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <strong>{{ 'ticketId' | translate }} #</strong><span>{{ ticket.ticketId }}</span>
+        </div>
+        <div class="mb-3">
+          <strong>{{ 'date' | translate }}: </strong><span>{{ ticket.createdAt | date: 'short' }}
+          </span>
+        </div>
+        <div class="mb-3">
+          <strong>{{ 'lastModified' | translate }}: </strong><span>{{ ticket.createdAt | date: 'short' }}</span>
+        </div>
+        <div class="mb-3">
+          <strong>{{ 'ticketTitle' | translate }}: </strong><span>{{ ticket.title }}</span>
+        </div>
+        <div class="mb-3">
+          <strong>{{ 'clientName' | translate }}: </strong><span>{{ ticket.userName }}</span>
+        </div>
+        <div class="mb-3">
+          <strong>{{ 'description' | translate }}: </strong><span>{{ ticket.ticketDescription }}</span>
+        </div>
+        <div class="d-flex gap-2">
+          <strong>{{ 'attachment' | translate }}: </strong>
+          <div class="d-flex gap-2">
+            <a *ngFor="let attach of ticket.attachment;let i = index" [href]="getAttachmentUrl(attach)"
+              [download]="ticket.fileName[i]">
+              {{ ticket.fileName[i] }}
+            </a>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button *ngIf="isItUser() && !isClosed()" (click)="onConfirm(ticket.ticketId)" class="btn btn-success">{{
+            'confirm' |
+            translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+
+        <div>
+          <strong>{{ 'commentsFor' | translate }} #</strong>{{ ticket.ticketId }}
+        </div>
+        <div>
+
+        </div>
+
+      </div>
+      <div class="card-body">
+
+        <div class="mb-3">
+          <p *ngIf="!comments">{{ 'noCommentFound' | translate }}</p>
+        </div>
+        <div *ngFor="let item of comments" class="card">
+          <div class="card-header">
+            <strong>{{ item.createAt | date: 'short' }}
+              {{'replyedBy' | translate}} {{item.fullName}} </strong>
+          </div>
+          <div class="header-body m-3">
+            {{item.replie}}
+          </div>
+        </div>
+        <div class="mb-3 d-flex" *ngIf="showInputField">
+          <textarea maxlength="500" type="text" class="form-control" [(ngModel)]="newComment"
+            placeholder="{{ 'writeComment' | translate }}"></textarea>
+          <button class="btn btn-success mx-2" style="max-height: 75px;" (click)="addComment()">{{ 'submitComment' |
+            translate }}</button>
+        </div>
+        <div class="mb-3" *ngIf="!getRole() && !isClosed()">
+          <button class="btn btn-success" (click)="toggleInputField()">{{ 'addNewComment' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

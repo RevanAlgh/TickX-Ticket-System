@@ -1,0 +1,20 @@
+/* Add to your styles.css or component-specific CSS file */
+
+.rounded-form-field .mat-form-field-infix {
+  border-radius: 8px; /* Adjust the border-radius as needed */
+}
+
+.rounded-input {
+  border-radius: 8px; /* Matches the form field's border-radius */
+}
+
+.rounded-select {
+  border-radius: 8px; /* Rounded corners for select dropdown */
+}
+
+/* Optionally add padding for a more spacious look */
+.mat-form-field,
+.form-select,
+.form-control {
+  padding: 0.5rem; /* Adjust padding for a friendlier look */
+}

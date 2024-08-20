@@ -1,0 +1,16 @@
+a {
+  cursor: pointer;
+}
+:root {
+  --main-color: #4481eb;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

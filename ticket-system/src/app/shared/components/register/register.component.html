@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="forms-container">
+    <div class="signin-signup">
+      <form action="#" class="sign-in-form" [formGroup]="registerForm">
+        <h2 class="title">{{'registeration' | translate}}</h2>
+
+        <div class="box" style="width: 150px; height: 150px;" (click)="fileInput.click()">
+          <div class="content11">
+            <img *ngIf="img" [src]="img">
+            <h2>{{'uploadPicture' | translate}}</h2>
+            <input type="file" #fileInput (change)="onChange($event)" style="display: none;">
+          </div>
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" formControlName="userName" [placeholder]="'username' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('userName')?.invalid && registerForm.get('userName')?.touched" class="text-danger">
+          * {{'usernameIsRequired' | translate}}
+        </div>
+
+        <div class="input-field">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <input type="text" formControlName="fullName" [placeholder]="'fullName' | translate">
+        </div>
+        <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" class="text-danger">
+          * {{'nameIsRequired' | translate}}
+        </div>
+
+        <div class="input-field">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+          <input type="email" formControlName="email" [placeholder]="'email' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
+          * {{'validEmailIsRequired' | translate}}
+        </div>
+        <div class="input-field">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <input type="number" intlTelInput id="number" formControlName="mobileNumber"
+            [placeholder]="'phone' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched"
+          class="text-danger">
+          * {{'mobileNumberIsRequired' | translate}}
+        </div>
+
+        <div class="input-field">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <input type="date" formControlName="dob" [placeholder]="'birthDate' | translate" max="2020-01-01S">
+
+        </div>
+        <div *ngIf="registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched" class="text-danger">
+          * {{'dobRequired' | translate}}
+        </div>
+        <div class="input-field">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <input type="text" formControlName="address" [placeholder]="'address' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched" class="text-danger">
+          * {{'addressIsRequired' | translate}}
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="password" [placeholder]="'password' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+          * {{'passwordIsRequired' | translate}}
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" formControlName="cnfrmPassword" [placeholder]="'confirmPassword' | translate">
+
+        </div>
+        <div *ngIf="registerForm.get('cnfrmPassword')?.invalid && registerForm.get('cnfrmPassword')?.touched"
+          class="text-danger">
+          * {{'confirmPasswordIsRequired' | translate}}
+        </div>
+        <input type="submit" (click)="onSubmit()" [value]="'register' | translate" class="btn p-2">
+        <p>{{'haveAccount' | translate}} <a routerLink="../login">{{'login' | translate}}</a></p>
+      </form>
+    </div>
+  </div>
+</div>

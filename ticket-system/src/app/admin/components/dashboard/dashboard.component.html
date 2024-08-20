@@ -1,0 +1,107 @@
+<div class="row mb-2 mb-sm-2">
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>
+
+<div class="row mb-1 my-5 mb-sm-2">
+  <div class="box-container mb-3" *ngIf="stat; else loading">
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{stat.ticketCount}}</h2>
+        <h2 class="topic">{{'tickets' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+        <path
+          d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3z" />
+      </svg>
+    </div>
+    <div class="box">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketPerMonth8_2024}}</h2>
+        <h2 class="topic">{{'ticketsOfMonth' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-calendar2-range-fill" viewBox="0 0 16 16">
+        <path
+          d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5m9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5M10 7a1 1 0 0 0 0 2h5V7zm-4 4a1 1 0 0 0-1-1H1v2h4a1 1 0 0 0 1-1" />
+      </svg>
+    </div>
+    <div class="box box3">
+      <div class="text">
+        <h2 class="topic-heading">{{stat.employeeCount}}</h2>
+        <h2 class="topic">{{'employees' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-workspace" viewBox="0 0 16 16">
+        <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+        <path
+          d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
+      </svg>
+    </div>
+    <div class="box box4">
+      <div class="text">
+        <h2 class="topic-heading">{{stat.ticketCount}}</h2>
+        <h2 class="topic">{{'clients' | translate}}</h2>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0" />
+        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-2 mb-sm-2">
+  <div class=" d-flex col-12 col-md-6">
+    <div class="report-container flex-grow-1">
+      <div class="report-header">
+        <h1 class="mostProductiveEmployee">{{'mostProductiveEmployee' | translate}}</h1>
+      </div>
+      <div class="report-body">
+        <div class="row header-table" style="box-shadow: 1px 1px 1px rgb(188, 188, 188);">
+          <h6 class="col">{{'name' | translate}}</h6>
+          <h6 class="col">{{'numOfClosedTickets' | translate}} </h6>
+        </div>
+        <div class="items">
+          <div class="row mb-2 mb-sm-2" *ngFor="let item of topEmployees; let i = index">
+            <h3 class="col" style="color: var(--main-color);"> {{item.fullName}}</h3>
+            <h3 class="col" style="color: var(--main-color);">{{item.closedTicketsCount }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex col-12 col-md-6" style="height: 100%;">
+    <div class="report-container flex-grow-1">
+      <div class="report-header m-0">
+        <h1 class="mostProductiveEmployee">{{'ticketsBasedOnMonth' | translate}}</h1>
+      </div>
+      <div class="report-body">
+        <div id="mainChart" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3 mb-sm-2">
+  <div class="col-12 col-md-6 d-flex">
+    <div class="report-container flex-grow-1">
+      <div class="report-header">
+        <h1 class="mostProductiveEmployee">{{ 'ticketsDuringAyear' | translate }}</h1>
+      </div>
+      <div class="report-body">
+        <div id="mainChartOfTicketByYear" class="w-100" style="height: 400px; width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="report-container flex-grow-1">
+      <div class="report-header">
+        <h1 class="mostProductiveEmployee">{{ 'ticketsPriorirtyStatistics' | translate }}</h1>
+      </div>
+      <div class="report-body">
+        <div id="chartOfTicketByPriority" class="w-100" style="height: 400px;  width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+</div>

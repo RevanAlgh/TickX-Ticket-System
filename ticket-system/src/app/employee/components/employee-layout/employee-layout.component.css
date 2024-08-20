@@ -1,0 +1,40 @@
+:root {
+  --main-color: #7cba00;
+}
+svg {
+  width: 25px;
+  height: 25px;
+}
+.bg-primary {
+  background-color: rgb(43, 32, 42);
+}
+a,
+button {
+  text-decoration: none;
+}
+
+li:hover {
+  background-color: var(--main-color);
+}
+
+li {
+  border-radius: 3px;
+}
+
+.sidebar {
+  width: 25%;
+  height: 100vh;
+  position: sticky;
+  right: 0;
+  top: 0;
+}
+.content {
+  margin-right: 25%;
+
+  height: 100vh;
+  overflow-y: auto;
+}
+
+i {
+  padding-inline-end: 10px;
+}

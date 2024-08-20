@@ -1,0 +1,67 @@
+<div class="row my-3"><!-- Add Product Card -->
+  <div class="col-12">
+    <div class="card mb-3">
+      <div class="card-header">
+        <strong>{{ 'addProduct' | translate }}</strong>
+      </div>
+      <div class="card-body">
+
+        <div class="row  align-items-center g-3">
+          <div class="col-10 form-group mb-2">
+            <label for="productName">{{ 'productName' | translate }}</label>
+            <input type="text" id="productName" class=" form-control" [(ngModel)]="productName" name="productName"
+              required>
+          </div>
+
+          <button (click)="addProduct()" class=" btn btn-primary btn-md" style="width: fit-content;">{{ 'addProduct'
+            | translate
+            }}</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <strong>{{ 'products' | translate }}</strong>
+
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{ 'id' | translate }}</th>
+              <th>{{ 'name' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of products | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+              <td>{{ item.productId }}</td>
+              <td>{{ item.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        <!-- Pagination -->
+
+        <!-- Entries per Page Dropdown -->
+        <div class="d-flex align-items-center">
+          <label class="mx-3" for="itemSize">{{ 'show' | translate }}</label>
+          <select id="itemSize" class="form-select" [(ngModel)]="pageSize">
+            <option *ngFor="let size of [5, 10, 20, 50, 100]" [value]="size">{{ size }}</option>
+          </select>
+          <label class="mx-3" for="itemSize">{{ 'entries' | translate }}</label>
+
+          <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="products.length">
+          </ngb-pagination>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

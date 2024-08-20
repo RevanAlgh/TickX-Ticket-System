@@ -1,0 +1,76 @@
+<div class="row mb-2">
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</div>
+
+<div class="row mb-1 mb-sm-2">
+  <div class="col-12 col-md-6 d-flex mb-sm-2 ">
+    <div class="report-container flex-grow-1">
+      <div class="report-header">
+        <h1 class="mostProductiveEmployee">{{'mostProductiveEmployee' | translate}}</h1>
+      </div>
+      <div class="report-body">
+        <div class="row header-table" style="box-shadow: 1px 1px 1px rgb(188, 188, 188);">
+          <h6 class="col">{{'name' | translate}}</h6>
+          <h6 class="col">{{'numOfClosedTickets' | translate}} </h6>
+        </div>
+        <div class="items">
+          <div class="row mb-2 mb-sm-2" *ngFor="let item of topEmployees; let i = index">
+            <strong class="col">{{item.fullName}}</strong>
+            <strong class="col">{{item.closedTicketsCount}}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 box-container mb-3" *ngIf="stat; else loading">
+    <div class="box mb-sm-2" style="height: 80%;">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketsOfYear}}</h2>
+        <h5 class="">{{'ticketsDuringAyear' | translate}}</h5>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+        <path
+          d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3z" />
+      </svg>
+    </div>
+    <div class="box mb-sm-2" style="height: 80%;">
+      <div class="text">
+        <h2 class="topic-heading">{{ticketPerMonth.ticketsCount}}</h2>
+        <h5 class="">{{'ticketsOfMonth' | translate}}</h5>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-calendar3-week" viewBox="0 0 16 16">
+        <path
+          d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
+        <path
+          d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m2-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-5 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-sm-2">
+  <div class="col-12 col-md-6 d-flex mb-sm-2" style="height: 100%;">
+    <div class="report-container flex-grow-1">
+      <div class="report-header m-0">
+        <h1 class="mostProductiveEmployee">{{'ticketsStatusStatistics' | translate}}</h1>
+      </div>
+      <div class="report-body">
+        <div id="mainChart" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 d-flex mb-sm-2" style="height: 100%;">
+    <div class="report-container flex-grow-1">
+      <div class="report-header m-0">
+        <h1 class="mostProductiveEmployee">{{'ticketsPriorirtyStatistics' | translate}}</h1>
+      </div>
+      <div class="report-body">
+        <div id="chartOfTicketByPriority" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>

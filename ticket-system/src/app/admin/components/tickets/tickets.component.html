@@ -1,0 +1,123 @@
+<div class="row my-3">
+
+  <div class="mb-3">
+
+    <h5>
+
+      {{'manageTickets'| translate}}
+
+    </h5>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header ">
+        <strong>
+          {{'tickets'| translate}}
+        </strong>
+      </div>
+      <div class="card-body">
+
+
+        <table class="table">
+          <thead>
+            <tr class="filters">
+              <th>{{'assignedEmployee' | translate}}
+                <select id="assigned-user-filter" class="form-control" [formControl]="assignedEmployeeControl">
+                  <option value="-1">{{'none' | translate}}</option>
+                  <option [value]="item.userId" *ngFor="let item of employees">{{item.fullName}}</option>
+                </select>
+              </th>
+              <th>{{'status' | translate}}
+                <select id="priority-filter" class="form-control" [formControl]="statusControl">
+                  <option value="-1">{{'any' | translate}}</option>
+                  <option *ngFor="let item of statusOptions" [value]="item.value">{{item.name}}</option>
+                </select>
+              </th>
+              <th>{{'priority' | translate}}
+                <select id="priority-filter" class="form-control" [formControl]="priorityControl">
+                  <option value="-1">{{'any' | translate}}</option>
+                  <option *ngFor="let item of priorityOptions" [value]="item.value">{{item.name}}</option>
+                </select>
+              </th>
+              <th> <label class="mx-3" for="search">{{'search' | translate}}</label>
+                <div class="form-control">
+                  <input class="col-9" type="text" id="search" [formControl]="searchControl">
+                </div>
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <table class="table table-bordered">
+          <thead>
+            <th>{{'id'| translate}}</th>
+            <th>
+              {{'clientName' | translate}}
+            </th>
+
+            <th>
+              {{'title' | translate}}
+            </th>
+
+            <th>
+              {{'status' | translate}}
+            </th>
+            <th>
+              {{'priority' | translate}}
+            </th>
+            <th>
+              {{'date' | translate}}
+            </th>
+            <th>
+              {{'actions' | translate }}
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tickets  | slice: (page  -1) * pageSize : (page-1) * pageSize + pageSize">
+              <td>{{ item.ticketId}}</td>
+              <td>{{item.userName}}</td>
+              <td>{{item.title}}</td>
+              <td> {{ item.status | status}}</td>
+              <td> {{ item.priority | priority}}</td>
+              <td>
+                {{item.createdAt | date}}
+              </td>
+              <td>
+                <button [routerLink]="['../ticket-details']" [state]="{ ticket: item}"
+                  class="btn btn-sm btn-secondary m-1"><i class="fa fa-eye"></i></button>
+                <button *ngIf="isItResolve(item.status)" (click)="changeStatus(item.ticketId)"
+                  class="btn btn-sm btn-danger">{{'close' | translate}}</button>
+
+
+                <button (click)="openpopup(item)" class="btn btn-sm btn-primary mx-2 my-1"><i
+                    class="fa fa-gear"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div>
+      <ngb-pagination class="" [(page)]="page" [pageSize]="pageSize" [collectionSize]="tickets.length"></ngb-pagination>
+    </div>
+    <div class="my-2">
+      <label class="mx-3" for="search">{{'show' | translate}}</label>
+      <select name="itemSize" id="itemSize" (change)="onItemChange($event)">
+        <option [disabled]="true">10</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <label class="mx-3" for="itemSize">{{'entries'}}</label>
+    </div>
+  </div>
+
+
+
+</div>

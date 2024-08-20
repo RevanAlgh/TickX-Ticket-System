@@ -1,0 +1,93 @@
+<div class="row my-3">
+  <div class="col-md-12 form-group mb-3">
+    <h5 class="mx-3" for="search">{{'manageEmployees' | translate}}</h5>
+
+  </div>
+  <div class="col col-sm-12">
+    <div class="card">
+      <div class="card-header  d-flex justify-content-between">
+        <strong>
+          {{'employees'| translate}}
+        </strong>
+
+        <a (click)="addEmployee()">
+          <strong>
+            {{'addEmployee'| translate}}
+          </strong>
+        </a>
+
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <th>{{'id' | translate}}</th>
+            <th>
+              {{'name' | translate}}
+            </th>
+            <th>
+              {{'email' | translate}}
+            </th>
+            <th>
+              {{'username' | translate}}
+            </th>
+
+            <th>
+              {{'phone' | translate}}
+            </th>
+            <th>
+              {{'actions' | translate}}
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of employee | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+              <td>{{item.userId}}</td>
+              <td>{{item.fullName}}</td>
+
+
+              <td> {{item.email}}</td>
+              <td>{{item.userName}}</td>
+
+              <td>
+                {{item.mobileNumber}}
+              </td>
+              <td>
+                <button (click)="editEmployee(item)" class="btn btn-sm my-1 btn-secondary mx-2"><i class="fa fa-eye"
+                    (click)="onEdit(item)"></i></button>
+                <button (click)="setActive(item.userId, item.isActive)" [ngClass]="{
+                  'btn-danger': item.isActive,
+                  'btn-success': !item.isActive
+                }" class="btn btn-sm">
+                  {{ item.isActive ? 'deactivate' : 'activate' | translate }}
+                </button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center">
+
+      <div>
+        <ngb-pagination class="" [(page)]="page" [pageSize]="pageSize"
+          [collectionSize]="employee.length"></ngb-pagination>
+      </div>
+      <div class="my-2">
+        <label class="mx-3" for="search">{{'show'| translate}}</label>
+        <select name="itemSize" id="itemSize" (change)="onItemChange($event)">
+          <option [disabled]="true">10</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <label class="mx-3" for="itemSize">{{'entries' | translate}}</label>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div #chatbot class="d-flex align-center chatbot">
+  <div *ngIf="chatDesplayed" (click)="toggleChat()">
+    <label class="mx-4" for="">{{'needHelp' | translate}}</label>
+    <img class="headerImg" src="chatbot.png" alt="">
+  </div>
+
+  <div class="chat-container" *ngIf="!chatDesplayed">
+    <div class="chat-header d-flex justify-content-start">
+      <button class="btn-close mx-2 bg-white" (click)="toggleChat()"></button>
+    </div>
+
+    <div class="chat-body" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div *ngFor="let item of responses" class="d-flex align-items-center" [ngClass]="item.style">
+        <ng-container *ngIf="item.bot">
+          <img style="width: 30px;height: 30px;" src="chatbot.png" alt="Chatbot" class="bot-img me-2" />
+        </ng-container>
+        <p>{{ item.message }}</p>
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input [(ngModel)]="message" type="text" placeholder="Type a message..." />
+      <button class="btn btn-primary" (click)="send()">Send</button>
+    </div>
+  </div>
+</div>

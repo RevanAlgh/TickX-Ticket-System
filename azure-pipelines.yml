@@ -1,0 +1,71 @@
+trigger:
+  branches:
+    include:
+      - master
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '8.x.x'
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x' # Specify the version of Node.js
+
+    - script: |
+        npm install -g @angular/cli
+        cd MyAngularApp
+        npm install
+        ng build --prod
+      displayName: 'Install and Build Angular App'
+
+    - script: |
+        cd ..
+        dotnet restore
+        dotnet build --configuration $(buildConfiguration)
+      displayName: 'Restore and Build .NET Core Project'
+
+    - script: |
+        dotnet test --configuration $(buildConfiguration)
+      displayName: 'Run Unit Tests'
+
+    - task: CopyFiles@2
+      inputs:
+        contents: 'MyAngularApp/dist/**/*'
+        targetFolder: '$(Build.ArtifactStagingDirectory)/wwwroot'
+      displayName: 'Copy Angular Build Files to Artifact Staging Directory'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+      displayName: 'Publish Build Artifacts'
+
+- stage: Deploy
+  jobs:
+  - deployment: Deploy
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: '<Your Azure Subscription>'
+              appName: '<Your Web App Name>'
+              package: '$(Pipeline.Workspace)/drop'

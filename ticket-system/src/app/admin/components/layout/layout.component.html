@@ -1,0 +1,73 @@
+<div class="row flex-grow-1">
+  <div class="col-3 d-none d-sm-block">
+    <aside class="sidebar bg-dark slidebar text-white w-100  h-100 vh-100  transition-transform duration-300">
+      <div class="relative border-bottom border-white-50">
+        <div class="d-flex align-items-center gap-4 py-3 px-4">
+          <h6 class="m-0 font-weight-bold text-white">{{'adminDashboard'|translate}}</h6>
+        </div>
+      </div>
+      <div class="m-4">
+        <ul class="mb-4 list-unstyled">
+          <li>
+            <a routerLink="dashboard">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-pie-chart" aria-hidden="true"></i>{{'dashboard'|translate}}
+                </p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="employees">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-user" aria-hidden="true"></i>{{'employees'|translate}}
+                </p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="tickets">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"> <i class="fa fa-ticket" aria-hidden="true"></i>{{'tickets'|translate}}</p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="clients">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"> <i class="fa fa-users" aria-hidden="true"></i>{{'clients'|translate}}</p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="products">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-th-large" aria-hidden="true"></i>{{'products'|translate}}
+                </p>
+              </button>
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a (click)="logout()">
+              <button class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-sign-out" aria-hidden="true"></i>{{'logout'|translate}}</p>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <div class="col-9">
+    <div class="container">
+
+      <router-outlet></router-outlet>
+      <app-chatbot></app-chatbot>
+    </div>
+  </div>
+</div>

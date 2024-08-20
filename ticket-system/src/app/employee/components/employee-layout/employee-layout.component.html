@@ -1,0 +1,53 @@
+<div class="row flex-grow-1">
+  <div class="col-3 d-none d-sm-block">
+    <aside class="sidebar bg-dark slidebar text-white w-100  h-100 vh-100  transition-transform duration-300">
+      <div class="relative border-bottom border-white-50">
+        <div class="d-flex align-items-center gap-4 py-3 px-4">
+          <h6 class="m-0 font-weight-bold text-white">{{'employeeDashboard'|translate}}</h6>
+        </div>
+      </div>
+      <div class="m-4">
+        <ul class="mb-4 list-unstyled">
+          <li>
+            <a routerLink="home">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"> <i class="fa fa-home" aria-hidden="true"></i>{{'home'|translate}}</p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="profile">
+              <button class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-user" aria-hidden="true"></i>{{'profile'|translate}}
+                </p>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a routerLink="tickets">
+              <button routerLinkActive="bg-primary shadow-md hover:shadow-lg"
+                class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"> <i class="fa fa-ticket" aria-hidden="true"></i>{{'tickets'|translate}}</p>
+              </button>
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a (click)="logout()">
+              <button class="btn btn-link text-white w-100 d-flex align-items-center gap-4 px-4 py-2">
+                <p class="m-0 text-white"><i class="fa fa-sign-out" aria-hidden="true"></i>{{'logout'|translate}}</p>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+  <div class="col-9 my-5">
+    <div class="container">
+      <app-chatbot></app-chatbot>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

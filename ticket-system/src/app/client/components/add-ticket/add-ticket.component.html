@@ -1,0 +1,48 @@
+<div style="margin-top: 70px;"></div>
+<div class="container my-4">
+  <form [formGroup]="ticketForm">
+    <div class="row jumbotron box8" style="min-height: 60vh;">
+      <div class="col-sm-8 mx-t3 mb-4">
+        <h4 class="">{{'newTicket' | translate}}</h4>
+      </div>
+      <div class="col-sm-8 form-group  my-2">
+        <label for="product">{{'chooseProduct' | translate}}</label>
+        <select formControlName="productId" id="product" class="form-control browser-default custom-select"
+          (change)="onProductChange($event)">
+          <option value="" disabled selected>{{'chooseOption' | translate}}</option>
+          <option [value]="item.productId" *ngFor="let item of products">{{item.name}}</option>
+        </select>
+
+      </div>
+      <div class="col-sm-8 form-group my-2">
+        <label for="tel">{{'title' | translate}}</label>
+        <input formControlName="title" type="text" name="title" class="form-control" id="title"
+          [placeholder]="'title' | translate" required>
+      </div>
+      <div class="col-sm-8 form-group my-2">
+        <label for="tel">{{'description' | translate}}</label>
+        <textarea formControlName="ticketDescription" id="tel" class="form-control"
+          [placeholder]="'writeYourProblem' | translate" maxlength="500"></textarea>
+      </div>
+      <div class="mb-3 col-sm-8 d-flex flex-column">
+        <label for="exampleFormControlFile1" class="form-label">{{'uploadedFile' |
+          translate}} (.PDF, PNG, JPEG,
+          JPG)</label>
+        <input type="file" (change)="onFileSelected($event)" multiple accept=".png, .jpeg, .jpg, .pdf" />
+        <ul>
+          <li *ngFor="let name of fileNames; let i = index">{{ name }} <i style="cursor: pointer;" (click)="remove(i)"
+              class="fa fa-times-circle" aria-hidden="true"></i></li>
+        </ul>
+        <div *ngIf="errorMessage" style="color: red; margin-top: 5px;">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="text-center col-sm-8 form-group my-2">
+        <button style="min-width: 150px;" (click)="send()" routerLinkActive="active"
+          class="btn btn-success float-right">{{'submit' | translate}}
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>

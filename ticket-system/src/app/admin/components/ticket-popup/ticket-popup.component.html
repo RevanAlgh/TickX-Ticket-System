@@ -1,0 +1,30 @@
+<div class="modal-header pt-4 px-4 border-bottom border-dark">
+  <h5 class="modal-title">{{'ticket' | translate}}</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closepopup()"></button>
+</div>
+<div class="modal-body my-2 px-4">
+  <div class="mb-3">
+    <strong for="username" class="form-label">{{'assignTo' | translate}}</strong>
+    <mat-form-field appearance="fill" class="rounded-form-field w-100">
+      <mat-label>{{'choose' | translate}}</mat-label>
+      <input matInput [formControl]="employeeControl" [matAutocomplete]="auto" class="rounded-input">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.userId">
+          {{ option.fullName }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <strong for="priority" class="form-label">{{ 'priority' | translate }}</strong>
+    <select id="priority" class="form-select rounded-select" [(ngModel)]="selectedPriority"
+      (ngModelChange)="onPriorityChange($event)">
+      <option [value]="ticket.priority" disabled>{{ ticket.priority | priority }}</option>
+      <option *ngFor="let item of getPriority()" [value]="item.value">{{ item.name }}</option>
+    </select>
+  </div>
+</div>
+<div class="modal-footer p-3">
+  <button type="submit" (click)="saveTicket()" class="btn btn-success mx-3">{{'save' | translate}}</button>
+  <button type="button" class="btn btn-secondary" (click)="closepopup()">{{'close' | translate}}</button>
+</div>

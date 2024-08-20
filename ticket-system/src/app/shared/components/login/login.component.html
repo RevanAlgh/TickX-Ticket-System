@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="forms-container">
+    <div class="signin-signup">
+      <form action="#" class="sign-in-form">
+        <h2 class="title">{{'login' | translate}}</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input [(ngModel)]='loginObj.nena' type="text" name="username" id="username"
+            [placeholder]="'username' | translate">
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input [(ngModel)]="loginObj.password" type="password" name="password" id="password"
+            [placeholder]="'password' | translate">
+        </div>
+        <a routerLink="../forgotPassword">{{'forgotPassword' | translate}}</a>
+
+
+
+        <div class="d-flex mb-2">
+          <input type="checkbox" name="remember_me" id="remember_me" [(ngModel)]="isRemembered">
+          <label class="mx-3" for="remember_me">{{'rememberMe' | translate}}</label>
+        </div>
+
+
+        <input (click)="onLogin()" [value]="'login' | translate" class="btn">
+
+        <p>{{'dontHaveAccount' | translate}} <a routerLink="../register">{{'registerNow' | translate}}</a></p>
+      </form>
+    </div>
+  </div>
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+      </div>
+    </div>
+  </div>
+</div>

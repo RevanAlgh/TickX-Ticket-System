@@ -1,0 +1,48 @@
+:root {
+  --main-color: #7cba00;
+}
+svg {
+  width: 25px;
+  height: 25px;
+}
+.bg-primary {
+  background-color: rgb(43, 32, 42);
+}
+a,
+button {
+  text-decoration: none;
+}
+
+li:hover {
+  background-color: var(--main-color);
+}
+
+li {
+  border-radius: 3px;
+}
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  position: sticky;
+  right: 0;
+  top: 0;
+}
+.content {
+  margin-right: 200px;
+
+  overflow-y: auto;
+}
+
+i {
+  padding-inline-end: 10px;
+}
+.fixed-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1000; /* Ensure the sidebar stays on top */
+  /* Optional: add a shadow for better visibility */
+}
