@@ -50,12 +50,12 @@ TickX is a Client Support Ticketing System where clients can submit, manage tick
 ---
 
 ### Schema
-![Schema Image](https://drive.google.com/file/d/1qP9ibk1LSVQ2-F_ZI0X0VnZ0XgxM_eJ7/view?usp=drive_link)
+![Schema Image](https://github.com/user-attachments/assets/3926c54b-ef9f-442c-b56d-691aaa41bb49)
 
 ---
 
 ### System Architecture
-![System Architecture Image](https://drive.google.com/file/d/10_P1_SXInSnrNPJKv3AgbaIufRiZFvph/view?usp=drive_link)
+![System Architecture Image](https://github.com/user-attachments/assets/6dd56854-99f5-4823-8edb-6c519fca9d98)
 
 ---
 
@@ -88,10 +88,10 @@ TickX is a Client Support Ticketing System where clients can submit, manage tick
 - Automatically closes tickets if no response is received within 5 days.
 
 **Here, we tested it using minutes instead of days, specifically for testing purposes.**
-![Schema Image](https://drive.google.com/file/d/1UcyVM05qxFH0QKRLax5ErIgPKEXeoC7C/view?usp=drive_link)
-![Schema Image](https://drive.google.com/file/d/1LPQd1Bx3VxQQllBK5-CwWZuuisJmILFk/view?usp=drive_link)
-![Schema Image](https://drive.google.com/file/d/1Z1kH0sl6VgaRGjyZxTCmjvUikYknBR1b/view?usp=drive_link)
-![Schema Image](https://drive.google.com/file/d/1eiyx8pCV-kWLEgzfVK-ad_OL27CCnkBC/view?usp=drive_link)
+![Schema Image](https://github.com/user-attachments/assets/3e910efc-aed5-4a90-8f7e-395f709c244a)
+![Image1](https://github.com/user-attachments/assets/ad84381e-ecc3-4fe1-9596-b224b0c3bca5)
+![Image2](https://github.com/user-attachments/assets/b80ccdde-80c5-4ed3-baf8-08c2eb4b4fbd)
+![Image3](https://github.com/user-attachments/assets/2dd48117-9372-4df9-a7e8-540f264c068b)
 
 ---
 
@@ -103,7 +103,7 @@ TickX is a Client Support Ticketing System where clients can submit, manage tick
 ---
 
 ### Demo Cycle
-[Video Link](https://drive.google.com/file/d/1pUxLfeSeTeEnbQxE5kSdsQVifpmD6aFB/view?usp=sharing)
+[Demo Video](https://drive.google.com/file/d/1pUxLfeSeTeEnbQxE5kSdsQVifpmD6aFB/view?usp=sharing)
 
 ---
 
